@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}学生选课数据库管理系统{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .non-clickable {
+            pointer-events: none;
+            color: #666;
+            border: 2px solid #666;
+            padding: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+        }
+        .header-content {
+            text-align: center;
+            margin: 1px 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        .header-content h1 {
+            margin: 0;
+        }
+        .user-info {
+            text-align: right;
+            margin-right: 10px;
+        }
+        .container {
+            padding: 1px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>学生选课数据库管理系统</h1>
+            {% if username %}
+            <div class="user-info">
+                <span>你好, {{ username }} 管理员!</span>
+                <a href="{{ url_for('logout') }}">退出登录</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="container">
+        {% if username %}
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main_menu') }}">主页</a></li>
+                <li class="non-clickable">学生管理</li>
+                <li><a href="{{ url_for('add_student') }}">添加学生</a></li>
+                <li><a href="{{ url_for('delete_student') }}">删除学生</a></li>
+                <li><a href="{{ url_for('update_student') }}">更新学生</a></li>
+                <li><a href="{{ url_for('query_students') }}">查询学生</a></li>
+                <li class="non-clickable">课程管理</li>
+                <li><a href="{{ url_for('add_course') }}">添加课程</a></li>
+                <li><a href="{{ url_for('delete_course') }}">删除课程</a></li>
+                <li><a href="{{ url_for('update_course') }}">更新课程</a></li>
+                <li><a href="{{ url_for('query_courses') }}">查询课程</a></li>
+                <li class="non-clickable">选课管理</li>
+                <li><a href="{{ url_for('add_enrollment') }}">添加选课</a></li>
+                <li><a href="{{ url_for('delete_enrollment') }}">删除选课</a></li>
+                <li><a href="{{ url_for('update_enrollment') }}">更新选课</a></li>
+                <li><a href="{{ url_for('query_enrollments') }}">查询选课</a></li>
+                <li><a href="{{ url_for('process_applications') }}">处理选课申请</a></li>
+                <li class="non-clickable">常用查询</li>
+                <li><a href="{{ url_for('query_course_students') }}">查询课程学生</a></li>
+                <li><a href="{{ url_for('query_pass_fail_students') }}">查询及格学生</a></li>
+                <li><a href="{{ url_for('query_missing_prerequisites') }}">查询先修课缺失</a></li>
+                <li><a href="{{ url_for('query_course_range') }}">筛选选课门数</a></li>
+                <li><a href="{{ url_for('query_major_courses') }}">查询专业选课</a></li>
+                <li><a href="{{ url_for('reset_password') }}">重置密码</a></li>
+            </ul>
+        </nav>
+        {% endif %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

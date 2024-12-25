@@ -1,0 +1,16 @@
+{% extends 'student_base.html' %}
+
+{% block student_content %}
+<h2>更新个人信息</h2>
+<form method="post">
+    <label for="sname">姓名:</label>
+    <input type="text" id="sname" name="sname" value="{{ student_info.Sname }}" required>
+    <label for="ssex">性别:</label>
+    <input type="text" id="ssex" name="ssex" value="{{ student_info.Ssex }}" required>
+    <label for="sbirthdate">出生日期:</label>
+    <input type="date" id="sbirthdate" name="sbirthdate" value="{{ student_info.Sbirthdate }}" required>
+    <label for="smajor">专业:</label>
+    <input type="text" id="smajor" name="smajor" value="{{ student_info.Smajor }}" required>
+    <button type="submit">更新</button>
+</form>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}学生选课系统{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .header-content {
+            text-align: center;
+            margin: 20px 0;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        .header-content h1 {
+            margin: 0;
+        }
+        .user-info {
+            text-align: right;
+            margin-right: 10px;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        nav {
+            width: 200px;
+            margin-right: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-bottom: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>学生选课系统</h1>
+            {% if username %}
+            <div class="user-info">
+                <span>你好, {{ username }} 学生!</span>
+                <a href="{{ url_for('logout') }}">退出登录</a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('student_main_menu') }}">主页</a></li>
+                <li><a href="{{ url_for('student_profile') }}">查询个人信息</a></li>
+                <li><a href="{{ url_for('update_student_info') }}">更新个人信息</a></li>
+                <li><a href="{{ url_for('student_courses') }}">查询选课信息</a></li>
+                <li><a href="{{ url_for('query_k') }}">查询所有课程</a></li>
+                <li><a href="{{ url_for('apply_course') }}">提交选课申请</a></li>
+            </ul>
+        </nav>
+        <main>
+            {% block student_content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}更新课程{% endblock %}
+
+{% block content %}
+<h2>更新课程信息</h2>
+<form method="post">
+    <!-- 原始信息 -->
+    <div class="form-row">
+        <label for="cno">课程号:</label>
+        <input type="text" id="cno" name="cno">
+        <label for="cname">课程名称:</label>
+        <input type="text" id="cname" name="cname">
+        <label for="ccredit">学分:</label>
+        <input type="number" id="ccredit" name="ccredit">
+        <label for="cpno">先修课程号:</label>
+        <input type="text" id="cpno" name="cpno">
+    </div>
+    <!-- 分隔行 -->
+    <div style="margin-top: 20px;"></div>
+    <!-- 更新信息 -->
+    <div class="form-row">
+        <label for="new_cno">新课程号:</label>
+        <input type="text" id="new_cno" name="new_cno">
+        <label for="new_cname">新课程名称:</label>
+        <input type="text" id="new_cname" name="new_cname">
+        <label for="new_credit">新学分:</label>
+        <input type="number" id="new_ccredit" name="new_ccredit">
+        <label for="new_cpno">新先修课程号:</label>
+        <input type="text" id="new_cpno" name="new_cpno">
+    </div>
+    <button type="submit">更新</button>
+</form>
+{% if results %}
+<h3>所有课程信息:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>课程号</th>
+            <th>课程名称</th>
+            <th>学分</th>
+            <th>先修课程号</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
