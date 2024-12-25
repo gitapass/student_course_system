@@ -1,2 +1,7 @@
 # student_course_system
 基于flask的学生选课数据库管理系统
+编程语言python、JavaScript
+数据库使用本地mysql
+根据本地mysql修改db_config.py可连接数据库
+直接运行app.py即可查看效果
+如果觉得有用，star一下
