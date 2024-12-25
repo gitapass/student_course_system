@@ -1,0 +1,39 @@
+{% extends 'student_base.html' %}
+
+{% block student_content %}
+<h2>查询所有课程</h2>
+<form method="post">
+    <label for="cno">课程号:</label>
+    <input type="text" id="cno" name="cno">
+    <label for="cname">课程名:</label>
+    <input type="text" id="cname" name="cname">
+    <label for="credit">学分:</label>
+    <input type="text" id="credit" name="credit">
+    <label for="cpno">先修课程号:</label>
+    <input type="text" id="cpno" name="cpno">
+    <button type="submit">查询</button>
+</form>
+{% if results %}
+<h3>查询结果:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>课程号</th>
+            <th>课程名</th>
+            <th>学分</th>
+            <th>先修课程号</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

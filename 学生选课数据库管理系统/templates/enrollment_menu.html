@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}选课管理{% endblock %}
+
+{% block content %}
+<h2>选课管理</h2>
+<p>请选择一个操作：</p>
+<ul>
+    <li><a href="{{ url_for('add_enrollment') }}">添加选课</a></li>
+    <li><a href="{{ url_for('delete_enrollment') }}">删除选课</a></li>
+    <li><a href="{{ url_for('update_enrollment') }}">更新选课</a></li>
+    <li><a href="{{ url_for('query_enrollments') }}">查询选课</a></li>
+</ul>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}登录{% endblock %}
+
+{% block content %}
+<div class="login-container">
+<div class="logo-container">
+    <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo" class="login-logo">
+</div>
+    <h2>请登录</h2>
+    <form method="post">
+        <div class="inputText">
+            <label for="role">角色:</label>
+            <select id="role" name="role" required>
+                <option value="admin">管理员</option>
+                <option value="student">学生</option>
+            </select>
+        </div>
+        <div class="inputText">
+            <span class="iconfont icon-mine"></span>
+            <input class="username" type="text" placeholder="用户名" id="username" name="username" required />
+        </div>
+        <div class="inputText">
+            <span class="iconfont icon-lock"></span>
+            <input type="password" placeholder="密码" id="password" name="password" required />
+        </div>
+        <input class="inputButton" type="submit" value="登录" />
+    </form>
+    <div>{{ msg }}</div>
+    <div>
+        <a href="{{ url_for('change_password') }}">修改密码</a>
+    </div>
+</div>
+    <div class="author-info">
+    作者：162120227 李旻泽
+</div>
+{% endblock %}

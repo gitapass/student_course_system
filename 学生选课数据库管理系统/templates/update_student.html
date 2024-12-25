@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}更新学生{% endblock %}
+
+{% block content %}
+<h2>更新学生信息</h2>
+<form method="post">
+    <!-- 原始信息 -->
+    <div class="form-row">
+        <label for="sno">学号:</label>
+        <input type="text" id="sno" name="sno">
+        <label for="sname">姓名:</label>
+        <input type="text" id="sname" name="sname">
+        <label for="ssex">性别:</label>
+        <input type="text" id="ssex" name="ssex">
+        <label for="sbirthdate">出生日期:</label>
+        <input type="date" id="sbirthdate" name="sbirthdate">
+        <label for="smajor">专业:</label>
+        <input type="text" id="smajor" name="smajor">
+    </div>
+    <!-- 分隔行 -->
+    <div style="margin-top: 20px;"></div>
+    <!-- 更新信息 -->
+    <div class="form-row">
+        <label for="new_sno">新学号:</label>
+        <input type="text" id="new_sno" name="new_sno">
+        <label for="new_sname">新姓名:</label>
+        <input type="text" id="new_sname" name="new_sname">
+        <label for="new_ssex">新性别:</label>
+        <input type="text" id="new_ssex" name="new_ssex">
+        <label for="new_sbirthdate">新出生日期:</label>
+        <input type="date" id="new_sbirthdate" name="new_sbirthdate">
+        <label for="new_smajor">新专业:</label>
+        <input type="text" id="new_smajor" name="new_smajor">
+    </div>
+    <button type="submit">更新</button>
+</form>
+{% if results %}
+<h3>所有学生信息:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>出生日期</th>
+            <th>专业</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+            <td>{{ result[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

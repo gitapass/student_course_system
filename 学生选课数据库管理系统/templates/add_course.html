@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}添加课程{% endblock %}
+
+{% block content %}
+<h2>添加课程</h2>
+<form method="post">
+    <label for="cno">课程号:</label>
+    <input type="text" id="cno" name="cno" required>
+    <label for="cname">课程名:</label>
+    <input type="text" id="cname" name="cname" required>
+    <label for="credit">学分:</label>
+    <input type="text" id="credit" name="credit" required>
+    <button type="submit">添加</button>
+</form>
+{% if results %}
+<h3>所有课程信息:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>课程号</th>
+            <th>课程名</th>
+            <th>学分</th>
+            <th>先修课程号</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

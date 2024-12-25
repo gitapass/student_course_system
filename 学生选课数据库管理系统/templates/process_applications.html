@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}处理选课申请{% endblock %}
+
+{% block content %}
+<h2>处理选课申请</h2>
+<form method="post" action="{{ url_for('process_applications') }}">
+    {% if applications %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>选择</th>
+                <th>学号</th>
+                <th>课程号</th>
+                <th>学期</th>
+                <th>教学班</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td><input type="checkbox" name="applications" value="{{ application.Sno }},{{ application.Cno }}"></td>
+                <td>{{ application.Sno }}</td>
+                <td>{{ application.Cno }}</td>
+                <td>{{ application.Semester }}</td>
+                <td>{{ application.Teachingclass }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit">同意选课</button>
+    {% else %}
+    <p>当前没有选课申请</p>
+    {% endif %}
+</form>
+{% endblock %}

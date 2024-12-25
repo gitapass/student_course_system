@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}查询及格学生{% endblock %}
+
+{% block content %}
+<h2>查询某门课及格和不及格的选课信息</h2>
+<form method="post">
+    <label for="cno">课程号:</label>
+    <input type="text" id="cno" name="cno">
+    <button type="submit">查询</button>
+</form>
+{% if pass_results or fail_results %}
+<h3>及格学生:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>课程号</th>
+            <th>成绩</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in pass_results %}
+        <tr>
+            <td>{{ result.Sno }}</td>
+            <td>{{ result.Sname }}</td>
+            <td>{{ result.Cno }}</td>
+            <td>{{ result.Grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>不及格学生:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>课程号</th>
+            <th>成绩</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in fail_results %}
+        <tr>
+            <td>{{ result.Sno }}</td>
+            <td>{{ result.Sname }}</td>
+            <td>{{ result.Cno }}</td>
+            <td>{{ result.Grade }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

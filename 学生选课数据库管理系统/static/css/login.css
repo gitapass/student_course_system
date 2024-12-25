@@ -1,0 +1,85 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative; /* Ensure absolute positioning for top-buttons works */
+}
+
+#maxbox {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+h1, h2 {
+    color: white;
+    margin: 10px 0;
+}
+
+.inputbox {
+    margin-top: 20px;
+}
+
+.inputText {
+    margin: 10px 0;
+    position: relative;
+}
+
+.inputText .iconfont {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.inputText input {
+    width: calc(100% - 20px); /* Adjust width to fit within the parent div */
+    padding: 10px 10px 10px 30px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.inputButton {
+    width: calc(100% - 20px); /* Ensure button width matches input width */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1E90FF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.inputButton:hover {
+    background-color: #3742fa;
+}
+
+/* Style for the top left buttons */
+.top-buttons {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.top-buttons a {
+    color: white;
+    background-color: #1E90FF;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.top-buttons a:hover {
+    background-color: #3742fa;
+}

@@ -1,0 +1,41 @@
+{% extends 'student_base.html' %}
+
+{% block student_content %}
+<h2>提交选课申请</h2>
+<form method="post" action="{{ url_for('apply_course') }}">
+    <div class="inputText">
+        <label for="cno">课程编号:</label>
+        <input type="text" id="cno" name="cno" required>
+    </div>
+    <div class="inputText">
+        <label for="semester">学期:</label>
+        <input type="text" id="semester" name="semester" required>
+    </div>
+    <div class="inputText">
+        <label for="teachingclass">教学班:</label>
+        <input type="text" id="teachingclass" name="teachingclass" required>
+    </div>
+    <input type="submit" class="inputButton" value="提交申请">
+</form>
+{% if applications %}
+<h3>已提交的选课申请:</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>课程号</th>
+            <th>学期</th>
+            <th>教学班</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.Cno }}</td>
+            <td>{{ application.Semester }}</td>
+            <td>{{ application.Teachingclass }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
